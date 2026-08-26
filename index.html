@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pall Quick Links</title>
+<meta name="description" content="Quick access links and resources for Pall employees and partners." />
 
 <style>
 :root{
@@ -11,8 +12,9 @@
     --pall-blue-light: #0a76c8;
     --pall-bg: #f5f8fc;
     --card-bg: #ffffff;
-    --text: #1f2937;
+    --text: #1f2937; /* dark text for good contrast */
     --border: #d9e2ec;
+    --focus: #0a76c8;
 }
 
 *{
@@ -21,11 +23,38 @@
     padding:0;
 }
 
+html,body{
+    height:100%;
+}
+
 body{
     font-family: "Segoe UI", Arial, sans-serif;
     background:var(--pall-bg);
     color:var(--text);
     padding:32px;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* Skip link - visible when focused */
+.skip-link{
+    position:absolute;
+    left:-999px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+.skip-link:focus{
+    left:16px;
+    top:16px;
+    width:auto;
+    height:auto;
+    padding:8px 12px;
+    background:#fff;
+    color:var(--text);
+    border:2px solid var(--focus);
+    border-radius:4px;
+    z-index:9999;
 }
 
 h1{
@@ -61,12 +90,21 @@ h1{
     min-height:180px;
     transition:all .2s ease;
     box-shadow:0 2px 8px rgba(0,0,0,.05);
+    color:var(--text);
 }
 
 .card:hover{
     transform:translateY(-4px);
     box-shadow:0 10px 24px rgba(0,90,156,.15);
     border-color:var(--pall-blue-light);
+}
+
+/* Keyboard focus for accessibility */
+.card:focus,
+.card:focus-visible{
+    outline:3px solid var(--focus);
+    outline-offset:4px;
+    transform:translateY(-2px);
 }
 
 .small-card{
@@ -87,65 +125,109 @@ h1{
     font-size:1.1rem;
     font-weight:600;
     text-align:center;
-    color:var(--pall-blue);
+    color:var(--text); /* use dark text for sufficient contrast */
 }
 
 .section-title{
     margin:20px 0 16px;
-    color:#4b5563;
+    color:#374151; /* slightly darker than before */
     font-size:0.95rem;
-    font-weight:600;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:1px;
+}
+
+/* Utility: visually hidden (screen-reader only) */
+.sr-only{
+    position:absolute !important;
+    width:1px !important;
+    height:1px !important;
+    padding:0 !important;
+    margin:-1px !important;
+    overflow:hidden !important;
+    clip:rect(0, 0, 0, 0) !important;
+    white-space:nowrap !important;
+    border:0 !important;
+}
+
+/* Make icons decorative for assistive tech */
+.icon[aria-hidden="true"]{
+    line-height:1;
+}
+
+/* Ensure sufficient hit target on small screens */
+.card{min-height:140px}
+
+@media (prefers-reduced-motion: reduce){
+    .card, .card:hover{transition:none; transform:none}
 }
 </style>
 </head>
 
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<h1>Pall Quick Links</h1>
+<header>
+  <h1>Pall Quick Links</h1>
+</header>
 
-<div class="card-grid">
+<main id="main" role="main">
+
+<div class="card-grid" aria-label="Primary quick links">
 
     <a class="card"
        href="https://bit.ly/danaherengagement"
        target="_blank"
-       rel="noopener noreferrer">
-        <div class="icon">📊</div>
+       rel="noopener noreferrer"
+       aria-label="Pall Engagement Survey — opens in a new tab">
+        <div class="icon" aria-hidden="true">📊</div>
         <div class="card-title">Pall Engagement Survey</div>
+        <span class="sr-only">Opens in a new tab</span>
     </a>
 
     <a class="card"
        href="https://register.danaherconnect.com"
        target="_blank"
-       rel="noopener noreferrer">
-        <div class="icon">🔑</div>
+       rel="noopener noreferrer"
+       aria-label="Password Reset — opens in a new tab">
+        <div class="icon" aria-hidden="true">🔑</div>
         <div class="card-title">Password Reset</div>
+        <span class="sr-only">Opens in a new tab</span>
     </a>
 
 </div>
 
-<div class="section-title">Additional Resources</div>
+<section aria-labelledby="additional-resources">
+  <h2 id="additional-resources" class="section-title">Additional Resources</h2>
 
-<div class="small-card-grid">
+  <div class="small-card-grid" aria-label="Additional resources">
 
     <a class="card small-card"
        href="https://sys.hsiplatform.com/en/PallCorpIndustrial/lp/login"
        target="_blank"
-       rel="noopener noreferrer">
-        <div class="icon">🎓</div>
+       rel="noopener noreferrer"
+       aria-label="HSI learning platform — opens in a new tab">
+        <div class="icon" aria-hidden="true">🎓</div>
         <div class="card-title">HSI</div>
+        <span class="sr-only">Opens in a new tab</span>
     </a>
 
     <a class="card small-card"
        href="https://jobs.danaher.com/global/en/search-results?keywords=deland,%20fl"
        target="_blank"
-       rel="noopener noreferrer">
-        <div class="icon">💼</div>
+       rel="noopener noreferrer"
+       aria-label="Danaher Jobs in Deland, Florida — opens in a new tab">
+        <div class="icon" aria-hidden="true">💼</div>
         <div class="card-title">Danaher Jobs</div>
+        <span class="sr-only">Opens in a new tab</span>
     </a>
 
-</div>
+  </div>
+</section>
+
+</main>
+
+<footer aria-hidden="true" style="visibility:hidden; height:0; overflow:hidden"><!-- reserved for future footer content --></footer>
 
 </body>
 </html>
