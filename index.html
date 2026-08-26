@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pall Quick Links</title>
+
+<style>
+:root{
+    --pall-blue: #005a9c;
+    --pall-blue-light: #0a76c8;
+    --pall-bg: #f5f8fc;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --border: #d9e2ec;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:var(--pall-bg);
+    color:var(--text);
+    padding:32px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:32px;
+    color:var(--pall-blue);
+    font-weight:600;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-bottom:24px;
+}
+
+.small-card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:16px;
+}
+
+.card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:32px 20px;
+    min-height:180px;
+    transition:all .2s ease;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px rgba(0,90,156,.15);
+    border-color:var(--pall-blue-light);
+}
+
+.small-card{
+    min-height:120px;
+    padding:20px;
+}
+
+.icon{
+    font-size:2.5rem;
+    margin-bottom:12px;
+}
+
+.small-card .icon{
+    font-size:1.75rem;
+}
+
+.card-title{
+    font-size:1.1rem;
+    font-weight:600;
+    text-align:center;
+    color:var(--pall-blue);
+}
+
+.section-title{
+    margin:20px 0 16px;
+    color:#4b5563;
+    font-size:0.95rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Pall Quick Links</h1>
+
+<div class="card-grid">
+
+    <a class="card"
+       href="https://bit.ly/danaherengagement"
+       target="_blank"
+       rel="noopener noreferrer">
+        <div class="icon">📊</div>
+        <div class="card-title">Pall Engagement Survey</div>
+    </a>
+
+    <a class="card"
+       href="https://register.danaherconnect.com"
+       target="_blank"
+       rel="noopener noreferrer">
+        <div class="icon">🔑</div>
+        <div class="card-title">Password Reset</div>
+    </a>
+
+</div>
+
+<div class="section-title">Additional Resources</div>
+
+<div class="small-card-grid">
+
+    <a class="card small-card"
+       href="https://sys.hsiplatform.com/en/PallCorpIndustrial/lp/login"
+       target="_blank"
+       rel="noopener noreferrer">
+        <div class="icon">🎓</div>
+        <div class="card-title">HSI</div>
+    </a>
+
+    <a class="card small-card"
+       href="https://jobs.danaher.com/global/en/search-results?keywords=deland,%20fl"
+       target="_blank"
+       rel="noopener noreferrer">
+        <div class="icon">💼</div>
+        <div class="card-title">Danaher Jobs</div>
+    </a>
+
+</div>
+
+</body>
+</html>
